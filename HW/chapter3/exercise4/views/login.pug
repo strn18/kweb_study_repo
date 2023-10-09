@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+  body
+    form(method='post', action='/login')
+      div
+        label Username:
+        input(id='username-input', name='username', type='text')
+      div
+        label Password:
+        input(id='password-input', name='password', type='password')
+      div
+        div Introduce yourself
+        textarea(id='introduction-input', name='introduction')
+      button(type='submit') Submit
