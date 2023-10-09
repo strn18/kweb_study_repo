@@ -16,7 +16,7 @@ const printJS = async curDir => {
       const nextDir = path.join(curDir, file);
       const stats = await stat(nextDir);
 
-      if (stats.isDirectory()) printJS(nextDir);
+      if (stats.isDirectory()) await printJS(nextDir);
       else if (path.extname(file) === '.js') console.log(nextDir);
     }
   } catch (err) {
