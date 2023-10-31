@@ -7,7 +7,7 @@ CREATE TABLE `users` (
   `profile_status_message` VARCHAR(50) NOT NULL,
   `is_deleted` TINYINT(1) NOT NULL DEFAULT 0,
   `sign_up_date` DATETIME NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `channels` (
@@ -18,7 +18,7 @@ CREATE TABLE `channels` (
   `max_capacity` INT NOT NULL,
   `is_deleted` TINYINT(1) NOT NULL DEFAULT 0,
   `create_date` DATETIME NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
   FOREIGN KEY (`created_user`) REFERENCES `users`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -28,8 +28,8 @@ CREATE TABLE `chats` (
   `writer` INT NOT NULL,
   `channel` INT NOT NULL,
   `created_date` DATETIME NOT NULL,
-  PRIMARY KEY (`id`)
-  FOREIGN KEY (`writer`) REFERENCES `users`(`id`) ON DELETE CASCADE
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`writer`) REFERENCES `users`(`id`) ON DELETE CASCADE,
   FOREIGN KEY (`channel`) REFERENCES `channels`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -38,8 +38,8 @@ CREATE TABLE `follows` (
   `follower` INT NOT NULL,
   `followee` INT NOT NULL,
   `follow_date` DATETIME NOT NULL,
-  PRIMARY KEY (`id`)
-  FOREIGN KEY (`follower`) REFERENCES `users`(`id`) ON DELETE CASCADE
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`follower`) REFERENCES `users`(`id`) ON DELETE CASCADE,
   FOREIGN KEY (`followee`) REFERENCES `users`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -48,7 +48,7 @@ CREATE TABLE `blocks` (
   `blocker` INT NOT NULL,
   `blockee` INT NOT NULL,
   `block_date` DATETIME NOT NULL,
-  PRIMARY KEY (`id`)
-  FOREIGN KEY (`blocker`) REFERENCES `users`(`id`) ON DELETE CASCADE
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`blocker`) REFERENCES `users`(`id`) ON DELETE CASCADE,
   FOREIGN KEY (`blockee`) REFERENCES `users`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
