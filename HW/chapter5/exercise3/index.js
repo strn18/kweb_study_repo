@@ -4,7 +4,7 @@ const { runQuery } = require('./database');
 const app = express();
 const port = 3000;
 
-app.get('/fare', async(req, res, next) => {
+app.get('/fare', async(req, res) => {
   try {
     const { uid } = req.query;
 
@@ -22,7 +22,7 @@ app.get('/fare', async(req, res, next) => {
   }
 });
 
-app.get('/train/status', async(req, res, next) => {
+app.get('/train/status', async(req, res) => {
   try {
     const { tid } = req.query;
 
